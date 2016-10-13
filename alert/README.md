@@ -2,6 +2,8 @@
 
 ---
 
+[演示](https://lennonover.github.io/Jquery.--.js/alert/index.html)
+
 ###使用demo
 
 ```javascript
