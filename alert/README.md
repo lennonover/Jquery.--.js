@@ -3,7 +3,7 @@
 
 [演示](https://lennonover.github.io/Jquery.--.js/alert/index.html)
 
-###Demo
+### Demo
 
 
     $.alert('消息弹窗')
@@ -22,7 +22,7 @@
     $.tips('弹出一条5秒后自动消失的悬浮提示，仅限PC版本',5000);
 
 
-###API
+### API
 
 |版本|API|说明|
 |---|---|---|
