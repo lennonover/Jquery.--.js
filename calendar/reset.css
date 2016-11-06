@@ -1,0 +1,36 @@
+*{ 
+	margin:0; 
+	padding:0;  
+}
+table{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a {
+	text-decoration:none;
+	cursor: pointer;
+}
+ul li {
+	list-style-type:none;
+}
+body{ 
+	color:#333; 
+	background:#FFF; 
+	font-size:12px; 
+	line-height:24px; 
+	font-family: "微软雅黑","宋体";
+}
+/* 清浮动 */ 
+.clearfix:before,.clearfix:after{
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+	overflow: hidden;
+}
+.clearfix:after{
+	clear: both;
+}
+.clearfix{
+	zoom:1;	
+}

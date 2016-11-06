@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jquery插件之弹框</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link id="libcss" rel="stylesheet" type="text/css" href="alert.css"/>
+	<link rel="stylesheet" type="text/css" href="../style/highlight.css">
+	<script type="text/javascript" src="../lib/jquery2.0.0.min.js"></script>
+	<script type="text/javascript" src="../lib/highlight.pack.js"></script>
+	<script id="libjs" type="text/javascript" src="alert.js"></script>
+	<style>
+	body{
+		background:#EAEAEA;
+		font-family:Microsoft YaHei;
+		padding:0;
+		margin:0;
+	}
+	#content{
+		width:480px;
+		max-width:100%;
+		position: absolute;
+	    top: 0;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    margin: auto;
+	    height: 80px;
+		padding:20px;
+		background:#fff;
+		overflow:hidden;
+	}
+	.github-button{
+		display:none;
+	}
+	.btn{border:1px solid #ccc;
+		color:#666;
+		display:inline-block;
+		padding:3px 6px;
+		cursor:pointer;
+		ont-size:14px;
+		margin:5px 0;
+		text-decoration:none
+	}
+	.btn:hover{
+		border-color:#EAEAEA;
+		color:#333;
+	}
+	.new:before{
+		content:'Hot';
+		color:red;
+		text-shadow:0 0 5px yellow;
+		font-weight:bold;
+		padding:0 5px;
+	}
+	.hide{display:none}
+	.red{color:red}
+
+	</style>
+</head>
+<body>
+	<div id="content">
+		<div class="btn" id="demo1">带回调的alert</div>
+		<div class="hide">
+			内容
+		</div>
+		
+		<div class="btn" id="demo2">带回调的confirm</div>
+		<div class="hide">
+			<pre><code class="language-javascript">//带回调函数的confirm调用方式
+			$.confirm('这是confirm',function(a){
+				$.alert('你点击了'+(a?'确定':'取消'))
+			})</code></pre>
+		</div>
+
+
+
+		<div class="btn" id="demo3">return false阻止对话框关闭</div>
+		<div class="hide">
+			<pre><code class="language-javascript">//回调函数中的this指向对话框对象
+			//return false可以阻止对话框关闭
+			$.confirm('点击确定不会关闭对话框！！', function(e) {
+				if(e){
+					this.content('回调函数阻止了对话框关闭，点击取消才能关闭！！');
+					return false;
+				}
+			})</code></pre>
+		</div>
+
+
+
+
+		<div class="btn new" id="demo5">自定义按钮文字</div>
+		<div class="hide">
+			<pre><code class="language-javascript">//自定义按钮文字
+			var dialog = $.confirm('自定义按钮文字');
+			dialog.ok('ok').cancel('cancel');
+			</code></pre>
+		</div>
+
+
+		<div class="btn new" id="demo6">自定义外观尺寸</div>
+		<div class="hide">
+			<pre><code class="language-javascript">//自定义宽度，自定义内容区域的padding宽度
+			$.confirm('&lt;iframe src="https://m.baidu.com/" width="100%" height="440" frameborder="no"/&gt;&lt;/iframe&gt;').padding(0).width(320).ok('关闭');
+			</code></pre>
+		</div>
+
+		<div class="btn" id="demo4">显示一条tips消息</div>
+
+	</div>
+
+	<script>
+	$(function(){
+		$('#mobdemo').on('click',function(){
+			$.alert('<iframe src="'+$(this).attr('href')+'" width="100%" height="180" frameborder="no"></iframe>').padding(0).width(320).ok('关闭');
+			return false
+		})
+		
+		$('#demo1').on('click',function(){
+			$.alert('<div>演示代码</div>'+$(this).next().html(),function(){
+				$.alert('点击了确定')
+			})
+		})
+		$('#demo2').on('click',function(){
+			$.confirm('<div>演示代码</div>'+$(this).next().html(),function(e){
+				$.alert('点击了'+(e?'确定':'取消'))
+			})
+		})
+		$('#demo3').on('click',function(){
+			$.confirm('<p class="red">点击确定不会关闭对话框！！</p><div>演示代码</div>'+$(this).next().html(),function(e){
+				if(e){
+					this.content('回调函数阻止了对话框关闭，点击取消才能关闭！！');
+					return false;
+				}
+			})
+		})
+		$('#demo4').on('click',function(){
+			Math.random()>0.5?$.tips('$.tips(\'你的提示消息，设置5秒后秒关闭\',5000)',5e3):$.tips('$.tips(\'你的提示消息，默认2秒关闭\')')
+		})
+		$('#demo5').on('click',function(){
+			$.confirm('<p class="red">自定义按钮文字！</p><div>演示代码</div>'+$(this).next().html()).ok('ok').cancel('cancel')
+		})
+		$('#demo6').on('click',function(){
+			$.confirm('<p class="red">可自定义宽度和消息框的padding！</p><div>演示代码</div>'+$(this).next().html(),function(e){
+				e&&$.confirm('<iframe src="https://m.baidu.com/" width="100%" height="440" frameborder="no"></iframe>',function(e){
+					if(!e){
+						$('#demo6').trigger('click')
+					}
+				}).padding(0).width(320).ok('关闭').cancel('返回查看代码');
+			}).ok('运行上面代码看效果').cancel('关闭')
+		})
+		$('pre').highlight();
+
+	})
+	</script>
+</body>
+</html>
