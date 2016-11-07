@@ -5,8 +5,6 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="reset.css">
     <link rel="stylesheet" href="calendar.css" type="text/css" />
-    <script type="text/javascript" src="jquery.min.js"></script>
-    <script type="text/javascript" src="calendar.js"></script>
     <style type="text/css">
     .test1,.test2{
       width: 800px;
@@ -14,6 +12,26 @@
       margin-top: 100px;
     }
     </style>
+  </head>
+  <body>
+    <div class="test1">
+      <h2>日期一</h2>
+      <h3>开始时间和结束时间选择范围当前设置是1个月</h3>
+      <br>
+      <input class="start-date waleiCalendar" type="text"  readonly="" value=""/>
+      <label for="">开始时间</label>
+      <input class="end-date waleiCalendar" type="text"  readonly="" value=""/>
+      <label for="">结束时间</label>
+    </div>
+     <div class="test2">
+      <h2>日期二</h2>
+      <h3>只能选今天之前的日期</h3>
+      <br>
+      <input class="waleiCalendar idate" type="text"  readonly="" value=""/>
+      <label for="">选择时间</label>
+    </div>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="calendar.js"></script>
     <script type="text/javascript">
       $(function () {
         //task1 calendarPair增加开始时间见和结束时间的校验，其他和calendar都一样
@@ -69,23 +87,5 @@
         $('.idate').calendar('set').$element[0].value//
       });
     </script>
-  </head>
-  <body>
-    <div class="test1">
-      <h2>日期一</h2>
-      <h3>开始时间和结束时间选择范围当前设置是1个月</h3>
-      <br>
-      <input class="start-date waleiCalendar" type="text"  readonly="" value=""/>
-      <label for="">开始时间</label>
-      <input class="end-date waleiCalendar" type="text"  readonly="" value=""/>
-      <label for="">结束时间</label>
-    </div>
-     <div class="test2">
-      <h2>日期二</h2>
-      <h3>只能选今天之前的日期</h3>
-      <br>
-      <input class="waleiCalendar idate" type="text"  readonly="" value=""/>
-      <label for="">选择时间</label>
-    </div>
   </body>
 </html>
