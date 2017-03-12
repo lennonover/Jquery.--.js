@@ -14,3 +14,7 @@ jQuery
 ## resize
 
 监测宽度高度变化
+
+## scrollRrevent
+
+子元素scrollg后父元素容器滚动条不跟随滚动
